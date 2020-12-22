@@ -714,7 +714,7 @@ class BigQueryHook(GoogleBaseHook, DbApiHook):
 
         table = Table.from_api_repr(table_resource)
         self.log.info('Updating table: %s', table_resource["tableReference"])
-        table_object = self.get_client().update_table(table=table, fields=fields)
+        table_object = self.get_client(project_id=project_id).update_table(table=table, fields=fields)
         self.log.info('Table %s.%s.%s updated successfully', project_id, dataset_id, table_id)
         return table_object.to_api_repr()
 
@@ -1337,7 +1337,7 @@ class BigQueryHook(GoogleBaseHook, DbApiHook):
         """
         table_ref = TableReference(dataset_ref=DatasetReference(project_id, dataset_id), table_id=table_id)
         table = self.get_client(project_id=project_id).get_table(table_ref)
-        return {"fields": [s.to_api_repr for s in table.schema]}
+        return {"fields": [s.to_api_repr() for s in table.schema]}
 
     @GoogleBaseHook.fallback_to_default_project_id
     def poll_job_complete(

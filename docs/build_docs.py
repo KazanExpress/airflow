@@ -92,7 +92,7 @@ def _get_parser():
     available_packages_list = " * " + "\n * ".join(get_available_packages())
     parser = argparse.ArgumentParser(
         description='Builds documentation and runs spell checking',
-        epilog=f"List of supported documentation packages:\n{available_packages_list}" "",
+        epilog=f"List of supported documentation packages:\n{available_packages_list}",
     )
     parser.formatter_class = argparse.RawTextHelpFormatter
     parser.add_argument(
@@ -244,10 +244,7 @@ def main():
             all_spelling_errors.update(package_spelling_errors)
 
     if not disable_checks:
-        general_errors = []
-        general_errors.extend(lint_checks.check_guide_links_in_operator_descriptions())
-        general_errors.extend(lint_checks.check_enforce_code_block())
-        general_errors.extend(lint_checks.check_exampleinclude_for_example_dags())
+        general_errors = lint_checks.run_all_check()
         if general_errors:
             all_build_errors[None] = general_errors
 

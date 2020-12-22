@@ -176,7 +176,7 @@ info:
     The default is to deny all requests.
 
     For details on configuring the authentication, see
-    [API Authorization](https://airflow.apache.org/docs/stable/security/api.html).
+    [API Authorization](https://airflow.apache.org/docs/apache-airflow/stable/security/api.html).
 
     # Errors
 
@@ -1338,7 +1338,7 @@ paths:
     get:
       summary: Get a instance status
       description: |
-        Get the status of Airflow's metadatabase and scheduler. It incluse info about
+        Get the status of Airflow's metadatabase and scheduler. It includes info about
         metadatabase and last heartbeat of scheduler.
       x-openapi-router-controller: airflow.api_connexion.endpoints.health_endpoint
       operationId: get_health
@@ -1883,7 +1883,7 @@ components:
             $ref: '#/components/schemas/XComCollectionItem'
 
     XCom:
-      description: Full representaiton of XCom entry.
+      description: Full representations of XCom entry.
       allOf:
         - $ref: '#/components/schemas/XComCollectionItem'
         - type: object
@@ -1901,7 +1901,7 @@ components:
         DAG details.
 
         For details see:
-        (airflow.models.DAG)[https://airflow.apache.org/docs/stable/_api/airflow/models/index.html#airflow.models.DAG]
+        (airflow.models.DAG)[https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/index.html#airflow.models.DAG]
       allOf:
         - $ref: '#/components/schemas/DAG'
         - type: object
@@ -1958,7 +1958,7 @@ components:
       type: object
       description: |
         For details see:
-        (airflow.models.BaseOperator)[https://airflow.apache.org/docs/stable/_api/airflow/models/index.html#airflow.models.BaseOperator]
+        (airflow.models.BaseOperator)[https://airflow.apache.org/docs/apache-airflow/stable/_api/airflow/models/index.html#airflow.models.BaseOperator]
       properties:
         class_ref:
           $ref: '#/components/schemas/ClassReference'
@@ -2784,8 +2784,8 @@ components:
         items:
           type: string
       description: |
-        The fields to update on the connection (connection, pool etc). If absent or empty, all
-        modifiable fields are updated. A comma-separated list of fully qualified names of fields.
+        The fields to update on the resource. If absent or empty, all modifiable fields are updated.
+        A comma-separated list of fully qualified names of fields.
       style: form
       explode: false
 
@@ -2893,4 +2893,4 @@ tags:
 
 
 externalDocs:
-  url: https://airflow.apache.org/docs/stable/
+  url: https://airflow.apache.org/docs/apache-airflow/stable/
